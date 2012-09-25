@@ -1,4 +1,5 @@
 TTS
-===
+---
 
-TTS Semester 1 2012/13
+Text Technologies Semester 1 2012/13
+Lecturer: Victor Lavrenko

@@ -9,30 +9,55 @@ import heapq
 
 useragent = "TTS"
 rp = robotparser.RobotFileParser()
+frontier = []
+visited = []
 
-startpage = "http://ir.inf.ed.ac.uk/tts/A1/0934142/0934142.html"
+baseURL = "http://ir.inf.ed.ac.uk/tts/A1/0934142/"
+startpage = "0934142.html"
 
-def setUpRobot(robotURL):
+# Find the top level directory given a URL
+def findRootURL(url):
+	matchRoot = re.match('.*?[//]*[\w.\w]+/',url)
+	return matchRoot.group()
+
+# Sets up the restrictions for the given domain
+def setUpRobot(url):
+	robotURL = findRootURL(url) + "robots.txt"
 	rp.set_url(robotURL)
 	rp.read()
 	rp.modified()
 
+# Load a page as a string
 def loadPage(url):
-	if rp.can_fetch(useragent,url):
-		return page = urllib.urlopen(url)
+	longURL = baseURL + url
+	if rp.can_fetch(useragent,longURL):
+		page = urllib.urlopen(longURL)
+		visited.append(url)
+		return page.read()
 	else:
 		return None
 
 # Nab URLs between CONTENT comments on a page
 def grabURLs(page):
-	if page != None
-	return 0
+	if page != None:
+		matchContent = re.search('<!-- CONTENT -->.*<!-- /CONTENT -->', page, re.DOTALL)
+		if matchContent:
+			content = matchContent.group()
 
-# Add a page to our frontier queue
-def addPage(page,queue):
-	return 0
+			# Once the content region has been identified, extract the URLs
+			urls = re.findall('(?<=a href=")\S*\.[A-za-z]+', content)
+			for url in urls:
+				matchDigits = re.search('\d+', url)
+				priority = int(matchDigits.group())
+				# The priority must be negated because heapq implements a min heap
+				heapq.heappush(frontier, (-(priority),url))
 
-setUpRobot("http://ir.inf.ed.ac.uk/robots.txt")
 
-loadPage(startpage)
+setUpRobot(baseURL)
+grabURLs(loadPage(startpage))
 
+while len(frontier) > 0:
+	(priority, url) = heapq.heappop(frontier)
+	if visited.count(url) == 0:
+		grabURLs(loadPage(url))
+print len(visited)

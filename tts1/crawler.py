@@ -69,8 +69,9 @@ grabURLs(loadPage(startpage))
 while len(frontier) > 0:
 	(priority, url) = heapq.heappop(frontier)
 	if visited.count(url) == 0 and denied.count(url) == 0:
-		unique++
+		unique += 1
 		grabURLs(loadPage(url))
 
 print len(visited)
 print len(denied)
+print unique

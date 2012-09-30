@@ -11,13 +11,14 @@ useragent = "TTS"
 rp = robotparser.RobotFileParser()
 frontier = []
 visited = []
+denied = []
 
 baseURL = "http://ir.inf.ed.ac.uk/tts/A1/0934142/"
 startpage = "0934142.html"
 
 # Find the top level directory given a URL
 def findRootURL(url):
-	matchRoot = re.match('.*?[//]*[\w.\w]+/',url)
+	matchRoot = re.match('.*?[//]*[\w.\w]+/', url)
 	return matchRoot.group()
 
 # Sets up the restrictions for the given domain
@@ -27,6 +28,13 @@ def setUpRobot(url):
 	rp.read()
 	rp.modified()
 
+# Check if domain has changed
+def checkDomainChange(url, base):
+	if findRootURL(url) != findRootURL(base):
+		return True
+	else:
+		return False
+
 # Load a page as a string
 def loadPage(url):
 	longURL = baseURL + url
@@ -35,9 +43,10 @@ def loadPage(url):
 		visited.append(url)
 		return page.read()
 	else:
+		denied.append(url)
 		return None
 
-# Nab URLs between CONTENT comments on a page
+# Parse URLs between CONTENT comments on a page
 def grabURLs(page):
 	if page != None:
 		matchContent = re.search('<!-- CONTENT -->.*<!-- /CONTENT -->', page, re.DOTALL)
@@ -61,3 +70,4 @@ while len(frontier) > 0:
 	if visited.count(url) == 0:
 		grabURLs(loadPage(url))
 print len(visited)
+print denied

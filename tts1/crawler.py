@@ -3,7 +3,7 @@
 # Steven Eardley s0934142
 
 import re
-import urllib
+from urllib2 import urlopen, URLError, HTTPError
 import robotparser
 import heapq
 
@@ -13,8 +13,8 @@ frontier = []
 visited = []
 denied = []
 
-# Variable for statistics: (unique, denied, error)
-stats = [0,0,0]
+# Variable for statistics: (unique, denied, error, noContent)
+stats = [0,0,0,0]
 
 baseURL = "http://ir.inf.ed.ac.uk/tts/A1/0934142/"
 startpage = "0934142.html"
@@ -39,12 +39,12 @@ def handleDomainChange(url, base):
 	print url + " " + base
 	if findRootURL(url) != findRootURL(base):
 		setUpRobot(url)
-		baseURL = 
 	else:
 		return False
 
 # Load a page as a string
 def loadPage(url):
+	# Increment stats to show a unique page has been considered
 	stats[0] += 1
 	
 	# URLs with a root domain may point externally
@@ -52,9 +52,24 @@ def loadPage(url):
 		longURL = baseURL + url
 	else:
 		longURL = url
-	handleDomainChange(longURL, baseURL)
+		handleDomainChange(longURL, baseURL)
+	
+	# Open only permitted pages. Catch errors and log the stats.
 	if rp.can_fetch(useragent,longURL):
-		page = urllib.urlopen(longURL)
+		try:
+			page = urlopen(longURL)
+		except HTTPError, e:
+			print 'Error on page: ' + longURL
+			print 'Error code: ', e.code
+			stats[2] += 1
+			return None
+		except URLError, e:
+			print 'Fatal! Connection Problems'
+			print 'Reason: ', e.reason
+			stats[2] += 1
+			return None
+		
+		# Save URL to visited list so we don't go there again
 		visited.append(url)
 		return page.read()
 	else:
@@ -80,7 +95,8 @@ def grabURLs(page):
 					# The priority must be negated because heapq implements a min heap
 					heapq.heappush(frontier, (-(priority),url))
 		else:
-			stats[2] += 1
+			print " No content found on page"
+			stats[3] += 1
 
 setUpRobot(baseURL)
 grabURLs(loadPage(startpage))

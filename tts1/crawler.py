@@ -3,7 +3,8 @@
 # Steven Eardley s0934142
 
 import re
-from urllib2 import urlopen, URLError, HTTPError
+#from urllib2 import urlopen, URLError, HTTPError
+import urllib
 import robotparser
 import heapq
 
@@ -21,7 +22,7 @@ startpage = "0934142.html"
 
 # Find the top level directory given a URL
 def findRootURL(url):
-	matchRoot = re.match('.*?[//]*[\w.\w]+/', url)
+	matchRoot = re.match('.*?[//][\w.\w]+/', url)
 	if matchRoot:
 		return matchRoot.group()
 	else:
@@ -44,10 +45,12 @@ def handleDomainChange(url, base):
 
 # Load a page as a string
 def loadPage(url):
+	print url
+	
 	# Increment stats to show a unique page has been considered
 	stats[0] += 1
 	
-	# URLs with a root domain may point externally
+	# Full URLs may point externally, short URLs need to have the base added.
 	if findRootURL(url) == None:
 		longURL = baseURL + url
 	else:
@@ -56,19 +59,20 @@ def loadPage(url):
 	
 	# Open only permitted pages. Catch errors and log the stats.
 	if rp.can_fetch(useragent,longURL):
-		try:
-			page = urlopen(longURL)
-		except HTTPError, e:
-			print 'Error on page: ' + longURL
-			print 'Error code: ', e.code
-			stats[2] += 1
-			return None
-		except URLError, e:
-			print 'Fatal! Connection Problems'
-			print 'Reason: ', e.reason
-			stats[2] += 1
-			return None
+		#try:
+			#page = urlopen(longURL)
+		#except HTTPError, e:
+			#print 'Error on page: ' + longURL
+			#print 'Error code: ', e.code
+			#stats[2] += 1
+			#return None
+		#except URLError, e:
+			#print 'Fatal! Connection Problems'
+			#print 'Reason: ', e.reason
+			#stats[2] += 1
+			#return None
 		
+		page = urllib.urlopen(longURL)
 		# Save URL to visited list so we don't go there again
 		visited.append(url)
 		return page.read()

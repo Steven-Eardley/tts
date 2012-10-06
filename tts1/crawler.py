@@ -34,13 +34,13 @@ def setUpRobot(url):
 	rp.read()
 	rp.modified()
 
-# If domain has changed, set up robot rules again
+# Check if the domain has changed, and handle it
 def handleDomainChange(url, base):
 	print url
 	if findRootURL(url) != findRootURL(base):
-		setUpRobot(url)
-		# Change the base URL to that of the new page's directory (not required for this assignment)
-		# baseURL = findDirectoryURL(url)
+		# Reset the crawler to use the new domain (not required for this assignment)
+		# setUpRobot(url)
+		# baseURL = findDirectoryURL(url) <- not implemented
 		return True
 	else:
 		return False
@@ -62,7 +62,7 @@ def loadPage(url):
 			stats[5] += 1
 			return None
 		
-	# Open only permitted pages. Catch errors and log the stats.
+	# Open only permitted pages. Catch errors and log the stats
 	if rp.can_fetch(useragent, longURL):
 		
 		# Save URL to visited list so we don't go there again
@@ -92,9 +92,9 @@ def loadPage(url):
 def grabURLs(page):
 	if page != None:
 		matchContent = re.search('<!-- CONTENT -->.*<!-- /CONTENT -->', page, re.DOTALL)
-		if True: # matchContent:
-			#content = matchContent.group()
-			content = page
+		if matchContent:
+			content = matchContent.group()
+			
 			# Once the content region has been identified, extract the URLs
 			urls = re.findall('(?<=a href=")\S*\.[A-za-z]+', content)
 			for url in urls:
@@ -110,13 +110,6 @@ def grabURLs(page):
 			
 			# Log the number of pages without content
 			stats[4] += 1
-
-print findRootURL("http://ir.inf.ed.ac.uk/tts/A1/0934142/0934142.html")
-print findRootURL("ir.inf.ed.ac.uk/tts/A1/0934142/0934142.html")
-print findRootURL("0934142.html")
-print findRootURL("private/0934142.html")
-print findRootURL("www.google.com")
-print findRootURL("http://www.google.com/test.html")
 
 setUpRobot(baseURL)
 grabURLs(loadPage(startpage))

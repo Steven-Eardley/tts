@@ -95,7 +95,7 @@ def grabURLs(page):
 			urls = re.findall('(?<=a href=")\S*\.[A-za-z]+', content)
 			for url in urls:
 				# Only add unseen pages to the frontier
-				if visited.count(url) == 0 and denied.count(url) == 0:
+				if True: #visited.count(url) == 0 and denied.count(url) == 0:
 					matchDigits = re.search('\d+', url)
 					priority = int(matchDigits.group())
 					
@@ -112,8 +112,8 @@ grabURLs(loadPage(startpage))
 while len(frontier) > 0:
 	print len(frontier)
 	(priority, url) = heapq.heappop(frontier)
-	#if visited.count(url) == 0 and denied.count(url) == 0:
-	grabURLs(loadPage(url))
+	if visited.count(url) == 0 and denied.count(url) == 0:
+		grabURLs(loadPage(url))
 		
 print "Unique URLs found: " + str(stats[0])
 print "Pages Visited:  " + str(stats[1])

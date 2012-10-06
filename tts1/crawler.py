@@ -110,6 +110,7 @@ grabURLs(loadPage(startpage))
 
 # Run until frontier is empty (no new pages to be visited)
 while len(frontier) > 0:
+	print len(frontier)
 	(priority, url) = heapq.heappop(frontier)
 	#if visited.count(url) == 0 and denied.count(url) == 0:
 	grabURLs(loadPage(url))

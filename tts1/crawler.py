@@ -52,6 +52,7 @@ def loadPage(url):
 	if findRootURL(url) == None:
 		longURL = baseURL + url
 	else:
+		print url
 		longURL = url
 		handleDomainChange(longURL, baseURL)
 	

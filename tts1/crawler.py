@@ -36,9 +36,10 @@ def setUpRobot(url):
 
 # If domain has changed, set up robot rules again
 def handleDomainChange(url, base):
+	print url
 	if findRootURL(url) != findRootURL(base):
 		setUpRobot(url)
-		# Change the base URL to that of the new page (not required for this assignment)
+		# Change the base URL to that of the new page's directory (not required for this assignment)
 		# base = directoryURL(url)
 		return True
 	else:

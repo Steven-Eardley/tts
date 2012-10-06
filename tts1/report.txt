@@ -1,0 +1,14 @@
+TTS Coursework 1								Steven Eardley s0934142
+
+The crawler uses the following modules:
+
+re - The standard regular expression module, utilised as detailed below.
+
+urllib2 - An improvement over urllib which detects page errors such as 404s
+rather than reading the 404 page itself and feeding it into the parser.
+
+robotparser - This module is used to read a robots.txt file and determine if
+URL access is permitted.
+
+heapq - adds heap functionality to a given list. This is useful as a simple
+implementation of a priority queue.

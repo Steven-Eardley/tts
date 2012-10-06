@@ -110,7 +110,7 @@ grabURLs(loadPage(startpage))
 while len(frontier) > 0:
 	print len(frontier)
 	(priority, url) = heapq.heappop(frontier)
-	print frontier.count(url)
+	print frontier.count(priority , url)
 	
 	# Only open novel pages in the frontier, ignore others.
 	if visited.count(url) == 0 and denied.count(url) == 0:

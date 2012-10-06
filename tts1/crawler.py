@@ -13,8 +13,8 @@ frontier = []
 visited = []
 denied = []
 
-# Variable for statistics: [unique, visited, denied, error, noContent]
-stats = [0,0,0,0,0]
+# Variable for statistics: [unique, visited, denied, error, noContent, external]
+stats = [0,0,0,0,0,0]
 
 baseURL = "http://ir.inf.ed.ac.uk/tts/A1/0934142/"
 startpage = "0934142.html"
@@ -36,9 +36,11 @@ def setUpRobot(url):
 
 # If domain has changed, set up robot rules again
 def handleDomainChange(url, base):
-	print url + " " + base
 	if findRootURL(url) != findRootURL(base):
 		setUpRobot(url)
+		# Change the base URL to that of the new page (not required for this assignment)
+		# base = directoryURL(url)
+		return True
 	else:
 		return False
 
@@ -52,12 +54,15 @@ def loadPage(url):
 	if findRootURL(url) == None:
 		longURL = baseURL + url
 	else:
-		print url
 		longURL = url
-		handleDomainChange(longURL, baseURL)
-	
+		
+		# If the URL points outside the domain, don't follow it for this assignment
+		if handleDomainChange(longURL, baseURL):
+			stats[5] += 1
+			return None
+		
 	# Open only permitted pages. Catch errors and log the stats.
-	if rp.can_fetch(useragent,longURL):
+	if rp.can_fetch(useragent, longURL):
 		
 		# Save URL to visited list so we don't go there again
 		visited.append(url)
@@ -95,7 +100,7 @@ def grabURLs(page):
 				matchDigits = re.search('\d+', url)
 				priority = int(matchDigits.group())
 				
-				# Only add unique pages to the frontier
+				# Only add unseen pages to the frontier
 				if visited.count(url) == 0 and denied.count(url) == 0 and frontier.count((-(priority) , url)) == 0:
 					
 					# Add to queue. The priority must be negated because heapq implements a min heap
@@ -119,3 +124,4 @@ print "Pages Visited:  " + str(stats[1])
 print "Pages Denied:  " + str(stats[2])
 print "Pages With errors: " + str(stats[3])
 print "Pages with no content: " + str(stats[4])
+print "External pages detected: " + str(stats[5])

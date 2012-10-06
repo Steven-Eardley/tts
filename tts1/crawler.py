@@ -95,7 +95,7 @@ def grabURLs(page):
 				priority = int(matchDigits.group())
 				
 				# Only add unique pages to the frontier
-				if visited.count(url) == 0 and denied.count(url) == 0 and frontier.count((-(priority) , url)) = 0:
+				if visited.count(url) == 0 and denied.count(url) == 0 and frontier.count((-(priority) , url)) == 0:
 					
 					# Add to queue. The priority must be negated because heapq implements a min heap
 					heapq.heappush(frontier, (-(priority), url))

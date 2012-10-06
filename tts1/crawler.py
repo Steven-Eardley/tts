@@ -45,7 +45,6 @@ def handleDomainChange(url, base):
 
 # Load a page as a string
 def loadPage(url):
-	print url
 	
 	# Increment stats to show a unique page has been considered
 	stats[0] += 1
@@ -59,6 +58,10 @@ def loadPage(url):
 	
 	# Open only permitted pages. Catch errors and log the stats.
 	if rp.can_fetch(useragent,longURL):
+		
+		# Save URL to visited list so we don't go there again
+		visited.append(url)
+		
 		try:
 			page = urlopen(longURL)
 			stats[1] += 1
@@ -75,8 +78,6 @@ def loadPage(url):
 		
 		#page = urllib.urlopen(longURL)
 		#stats[1] += 1
-		# Save URL to visited list so we don't go there again
-		visited.append(url)
 		return page.read()
 	else:
 		stats[2] += 1
@@ -118,3 +119,5 @@ print "Pages Visited:  " + str(stats[1])
 print "Pages Denied:  " + str(stats[2])
 print "Pages With errors: " + str(stats[3])
 print "Pages with no content: " + str(stats[4])
+
+print len(visited)

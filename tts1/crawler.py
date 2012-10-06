@@ -3,8 +3,8 @@
 # Steven Eardley s0934142
 
 import re
-#from urllib2 import urlopen, URLError, HTTPError
-import urllib
+from urllib2 import urlopen, URLError, HTTPError
+#import urllib
 import robotparser
 import heapq
 
@@ -59,22 +59,22 @@ def loadPage(url):
 	
 	# Open only permitted pages. Catch errors and log the stats.
 	if rp.can_fetch(useragent,longURL):
-		#try:
-			#page = urlopen(longURL)
-			#stats[1] += 1
-		#except HTTPError, e:
-			#print 'Error on page: ' + longURL
-			#print 'Error code: ', e.code
-			#stats[3] += 1
-			#return None
-		#except URLError, e:
-			#print 'Fatal! Connection Problems'
-			#print 'Reason: ', e.reason
-			#stats[3] += 1
-			#return None
+		try:
+			page = urlopen(longURL)
+			stats[1] += 1
+		except HTTPError, e:
+			print 'Error on page: ' + longURL
+			print 'Error code: ', e.code
+			stats[3] += 1
+			return None
+		except URLError, e:
+			print 'Fatal! Connection Problems'
+			print 'Reason: ', e.reason
+			stats[3] += 1
+			return None
 		
-		page = urllib.urlopen(longURL)
-		stats[1] += 1
+		#page = urllib.urlopen(longURL)
+		#stats[1] += 1
 		# Save URL to visited list so we don't go there again
 		visited.append(url)
 		return page.read()

@@ -91,9 +91,9 @@ def loadPage(url):
 def grabURLs(page):
 	if page != None:
 		matchContent = re.search('<!-- CONTENT -->.*<!-- /CONTENT -->', page, re.DOTALL)
-		if matchContent:
-			content = matchContent.group()
-
+		if True: # matchContent:
+			#content = matchContent.group()
+			content = page
 			# Once the content region has been identified, extract the URLs
 			urls = re.findall('(?<=a href=")\S*\.[A-za-z]+', content)
 			for url in urls:

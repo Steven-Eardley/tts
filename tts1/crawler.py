@@ -4,7 +4,6 @@
 
 import re
 from urllib2 import urlopen, URLError, HTTPError
-#import urllib
 import robotparser
 import heapq
 
@@ -75,9 +74,7 @@ def loadPage(url):
 			print 'Reason: ', e.reason
 			stats[3] += 1
 			return None
-		
-		#page = urllib.urlopen(longURL)
-		#stats[1] += 1
+
 		return page.read()
 	else:
 		stats[2] += 1
@@ -97,9 +94,13 @@ def grabURLs(page):
 				matchDigits = re.search('\d+', url)
 				priority = int(matchDigits.group())
 				
-				# The priority must be negated because heapq implements a min heap
-				heapq.heappush(frontier, (-(priority),url))
+				# Only add unique pages to the frontier
+				if visited.count(url) == 0 and denied.count(url) == 0 and frontier.count((-(priority) , url)) = 0:
+					
+					# Add to queue. The priority must be negated because heapq implements a min heap
+					heapq.heappush(frontier, (-(priority), url))
 		else:
+			
 			# Log the number of pages without content
 			stats[4] += 1
 
@@ -110,16 +111,10 @@ grabURLs(loadPage(startpage))
 while len(frontier) > 0:
 	print len(frontier)
 	(priority, url) = heapq.heappop(frontier)
-	print frontier.count((priority , url))
-	
-	# Only open novel pages in the frontier, ignore others.
-	if visited.count(url) == 0 and denied.count(url) == 0:
-		grabURLs(loadPage(url))
+	grabURLs(loadPage(url))
 		
 print "Unique URLs found: " + str(stats[0])
 print "Pages Visited:  " + str(stats[1])
 print "Pages Denied:  " + str(stats[2])
 print "Pages With errors: " + str(stats[3])
 print "Pages with no content: " + str(stats[4])
-
-print len(visited)

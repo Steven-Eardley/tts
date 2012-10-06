@@ -14,8 +14,8 @@ frontier = []
 visited = []
 denied = []
 
-# Variable for statistics: (unique, denied, error, noContent)
-stats = [0,0,0,0]
+# Variable for statistics: [unique, visited, denied, error, noContent]
+stats = [0,0,0,0,0]
 
 baseURL = "http://ir.inf.ed.ac.uk/tts/A1/0934142/"
 startpage = "0934142.html"
@@ -61,23 +61,25 @@ def loadPage(url):
 	if rp.can_fetch(useragent,longURL):
 		#try:
 			#page = urlopen(longURL)
+			#stats[1] += 1
 		#except HTTPError, e:
 			#print 'Error on page: ' + longURL
 			#print 'Error code: ', e.code
-			#stats[2] += 1
+			#stats[3] += 1
 			#return None
 		#except URLError, e:
 			#print 'Fatal! Connection Problems'
 			#print 'Reason: ', e.reason
-			#stats[2] += 1
+			#stats[3] += 1
 			#return None
 		
 		page = urllib.urlopen(longURL)
+		stats[1] += 1
 		# Save URL to visited list so we don't go there again
 		visited.append(url)
 		return page.read()
 	else:
-		stats[1] += 1
+		stats[2] += 1
 		denied.append(url)
 		return None
 
@@ -99,8 +101,8 @@ def grabURLs(page):
 					# The priority must be negated because heapq implements a min heap
 					heapq.heappush(frontier, (-(priority),url))
 		else:
-			print " No content found on page"
-			stats[3] += 1
+			# Log the number of pages without content
+			stats[4] += 1
 
 setUpRobot(baseURL)
 grabURLs(loadPage(startpage))
@@ -110,8 +112,9 @@ while len(frontier) > 0:
 	(priority, url) = heapq.heappop(frontier)
 	if visited.count(url) == 0 and denied.count(url) == 0:
 		grabURLs(loadPage(url))
-
-print "Pages Visited:  " + str(len(visited))
-print "Pages Denied:  " + str(len(denied))
+		
 print "Unique URLs found: " + str(stats[0])
-print stats
+print "Pages Visited:  " + str(stats[1])
+print "Pages Denied:  " + str(stats[2])
+print "Pages With errors: " + str(stats[3])
+print "Pages with no content: " + str(stats[4])

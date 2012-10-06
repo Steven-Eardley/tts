@@ -40,7 +40,7 @@ def handleDomainChange(url, base):
 	if findRootURL(url) != findRootURL(base):
 		setUpRobot(url)
 		# Change the base URL to that of the new page's directory (not required for this assignment)
-		# base = directoryURL(url)
+		# baseURL = findDirectoryURL(url)
 		return True
 	else:
 		return False
@@ -56,7 +56,7 @@ def loadPage(url):
 		longURL = baseURL + url
 	else:
 		longURL = url
-		
+		print url
 		# If the URL points outside the domain, don't follow it for this assignment
 		if handleDomainChange(longURL, baseURL):
 			stats[5] += 1
@@ -111,12 +111,19 @@ def grabURLs(page):
 			# Log the number of pages without content
 			stats[4] += 1
 
+print findRootURL("http://ir.inf.ed.ac.uk/tts/A1/0934142/0934142.html")
+print findRootURL("ir.inf.ed.ac.uk/tts/A1/0934142/0934142.html")
+print findRootURL("0934142.html")
+print findRootURL("private/0934142.html")
+print findRootURL("www.google.com")
+print findRootURL("http://www.google.com/test.html")
+
 setUpRobot(baseURL)
 grabURLs(loadPage(startpage))
 
 # Run until frontier is empty (no new pages to be visited)
 while len(frontier) > 0:
-	print len(frontier)
+	#print len(frontier)
 	(priority, url) = heapq.heappop(frontier)
 	grabURLs(loadPage(url))
 		

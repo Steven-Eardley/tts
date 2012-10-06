@@ -95,7 +95,7 @@ def grabURLs(page):
 			urls = re.findall('(?<=a href=")\S*\.[A-za-z]+', content)
 			for url in urls:
 				# Only add unseen pages to the frontier
-				if visited.count(url) == 0 and denied.count(url) == 0 and frontier.count(url) == 0:
+				if (visited.count(url) == 0 and denied.count(url) == 0 and frontier.count(url) == 0):
 					matchDigits = re.search('\d+', url)
 					priority = int(matchDigits.group())
 					

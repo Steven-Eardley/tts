@@ -94,13 +94,11 @@ def grabURLs(page):
 			# Once the content region has been identified, extract the URLs
 			urls = re.findall('(?<=a href=")\S*\.[A-za-z]+', content)
 			for url in urls:
-				# Only add unseen pages to the frontier
-				if (visited.count(url) == 0 and denied.count(url) == 0 and frontier.count(url) == 0):
-					matchDigits = re.search('\d+', url)
-					priority = int(matchDigits.group())
-					
-					# The priority must be negated because heapq implements a min heap
-					heapq.heappush(frontier, (-(priority),url))
+				matchDigits = re.search('\d+', url)
+				priority = int(matchDigits.group())
+				
+				# The priority must be negated because heapq implements a min heap
+				heapq.heappush(frontier, (-(priority),url))
 		else:
 			# Log the number of pages without content
 			stats[4] += 1
@@ -112,8 +110,11 @@ grabURLs(loadPage(startpage))
 while len(frontier) > 0:
 	print len(frontier)
 	(priority, url) = heapq.heappop(frontier)
-	# if visited.count(url) == 0 and denied.count(url) == 0:
-	grabURLs(loadPage(url))
+	print frontier.count(url)
+	
+	# Only open novel pages in the frontier, ignore others.
+	if visited.count(url) == 0 and denied.count(url) == 0:
+		grabURLs(loadPage(url))
 		
 print "Unique URLs found: " + str(stats[0])
 print "Pages Visited:  " + str(stats[1])

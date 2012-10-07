@@ -6,9 +6,11 @@ import re
 from urllib2 import urlopen, URLError, HTTPError
 import robotparser
 import heapq
+import time
 
 useragent = "TTS"
 rp = robotparser.RobotFileParser()
+crawlRate = 0.0
 frontier = []
 visited = []
 denied = []
@@ -32,7 +34,20 @@ def setUpRobot(url):
 	robotURL = findRootURL(url) + "robots.txt"
 	rp.set_url(robotURL)
 	rp.read()
-	rp.modified()
+	
+	# Find the request rate in (pages / sec)
+	robots = urlopen(robotURL).read()
+	matchRate = re.search('(?<=request-rate:)[ \t]*(.*)', robots,
+re.IGNORECASE)
+	if matchRate:
+		rateSTR = matchRate.group()
+
+		# Remove preceeding space from rateSTR
+		if rateSTR[0] == " ":
+			rateSTR = rateSTR[1:]
+		split = rateSTR.index('/')
+		global crawlRate 
+		crawlRate = float(rateSTR[:split]) / float(rateSTR[split + 1:])
 
 # Check if the domain has changed, and handle it
 def handleDomainChange(url, base):
@@ -72,8 +87,8 @@ def loadPage(url):
 			page = urlopen(longURL)
 			stats[1] += 1
 		except HTTPError, e:
-			print 'Error on page: ' + longURL
-			print 'Error code: ', e.code
+			#print 'Error on page: ' + longURL
+			#print 'Error code: ', e.code
 			stats[3] += 1
 			return None
 		except URLError, e:
@@ -117,6 +132,7 @@ grabURLs(loadPage(startpage))
 # Run until frontier is empty (no new pages to be visited)
 while len(frontier) > 0:
 	#print len(frontier)
+	#time.sleep(crawlRate)
 	(priority, url) = heapq.heappop(frontier)
 	grabURLs(loadPage(url))
 		

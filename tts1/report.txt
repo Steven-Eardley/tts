@@ -1,4 +1,4 @@
-TTS Coursework 1								Steven Eardley s0934142
+TTS Coursework 1									Steven Eardley s0934142
 
 The crawler uses the following modules:
 
@@ -12,3 +12,13 @@ URL access is permitted.
 
 heapq - adds heap functionality to a given list. This is useful as a simple
 implementation of a priority queue.
+
+time - This is used to implement the request rate, by sleeping the process.
+
+Limitations:
+	The crawler does not take into account when robots.txt was parsed, so if it
+were to spend an extended time in one domain, it would fail to pick up changes.
+
+	The crawler does not handle navigation through a folder structure. This
+would require alterations to the baseURL and concatenation of URLs in
+loadPage(). 

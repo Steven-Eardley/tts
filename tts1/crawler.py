@@ -132,7 +132,7 @@ grabURLs(loadPage(startpage))
 # Run until frontier is empty (no new pages to be visited)
 while len(frontier) > 0:
 	#print len(frontier)
-	#time.sleep(crawlRate)
+	time.sleep(crawlRate)
 	(priority, url) = heapq.heappop(frontier)
 	grabURLs(loadPage(url))
 		

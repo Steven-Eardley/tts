@@ -10,10 +10,11 @@ rather than reading the 404 page itself and feeding it into the parser.
 robotparser - This module is used to read a robots.txt file and determine if
 URL access is permitted.
 
-heapq - adds heap functionality to a given list. This is useful as a simple
-implementation of a priority queue.
+heapq - adds (min) heap functionality to a given list. This is useful as a
+simple implementation of a priority queue.
 
 time - This is used to implement the request rate, by sleeping the process.
+
 
 Limitations:
 	The crawler does not take into account when robots.txt was parsed, so if it
@@ -21,4 +22,73 @@ were to spend an extended time in one domain, it would fail to pick up changes.
 
 	The crawler does not handle navigation through a folder structure. This
 would require alterations to the baseURL and concatenation of URLs in
-loadPage(). 
+loadPage(). As such, some links of the form "../page.html" are not properly
+handled. When browsing it can be seen that these tend to lead to 404 errors
+anyway.
+
+	The crawler does not save the pages as per the algorithm; this is to save
+disk space since this is not required to parse the pages.
+
+
+Outline:
+	Once the crawler access rules and request rate are parsed using the
+method setUpRobot(), the crawler opens the first page if allowed using
+urllib2.urlopen(), and reads the input stream as a string. At this stage the
+URL is added to a 'visited' list, or if denied to a 'denied' list. The content
+region is identified by selecting the text matching the following regular
+expression:
+	
+	'<!-- CONTENT -->.*<!-- /CONTENT -->'
+	
+which is a verbose method for matching all characters between the two comments.
+The text within the content region is checked for URLs using another regular
+expression:
+	
+	'(?<=a href=")\S*\.[A-za-z]+'
+	
+this takes alphanumeric characters followed by a '.' and a file type such as
+'html'. Each URL is then searched for digits (regular expression '\d+') to find
+the priority. The number is negated and added to the frontier (a min heap using
+heapq) as a tuple with the url only if it hasn't been found in the visited or
+denied lists or isn't already in the frontier. Due to the negation, the highest
+number will produce the minimum and therefore the greatest priority in the
+queue.
+
+The crawler runs until the frontier is empty, i.e. there are no unexplored
+pages.
+
+Output:
+$ time python crawler.py                    
+                          
+Unique URLs found: 856
+Pages Visited:  807
+Pages Denied:  45
+Pages With errors: 4
+Pages with no content: 9
+External pages detected: 0
+
+real    14m35.839s
+user    0m2.452s
+sys     0m0.394s
+
+
+Results:
+	Due to the delays imposed by the 'Request-rate' field in robots.txt the
+crawler takes 14.5 minutes to run. During the crawl it finds 856 unique URLs, 45
+of which are denied by the robots rules, leaving 811 accessible to the crawler.
+Of those, 4 pages return 404 errors leaving 807 visited. 9 of these pages have
+no content section. Inspection of these shows they are CNN 404 pages which were
+scraped in the original crawl. No links pointing to external domains were
+encountered by the crawler. Most of these exist outwith the content region.
+
+Further Results:
+	By logging the size of the frontier at every iteration, a plot was made of
+the frontier growth:
+	
+	[plot]
+
+As expected, the crawler encounters a rapidly expanding set of unique pages to
+consider and then gradually depletes the list. This is because most of these
+news pages contain numerous URLs to other articles which themselves have similar
+properties. At the beginning most URLs are novel, then the rate decreases until
+the maximum frontier length at 588 pages.

@@ -21,7 +21,7 @@ def getData(filename):
 		parsedData.append((number, words))
 	return parsedData
 
-def evalOverlap(query, document):
+def evalTfidf(query, document):
 	similarity = 0
 	
 	# Remove duplicates from the document
@@ -38,14 +38,13 @@ def evalOverlap(query, document):
 	else:
 		return None
 
-
 outFile = open('overlap.top', 'w')
 queries = getData('qrys.txt')
 documents = getData('docs.txt')
 
 for query in queries:
 	for document in documents:
-		result = evalOverlap(query, document)
+		result = evalTfidf(query, document)
 		if result != None:
 			outFile.write(result + '\n')
 outFile.close()

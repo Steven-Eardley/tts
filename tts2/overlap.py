@@ -30,6 +30,17 @@ def saveToFile(data, filename):
 	finally:
 	    f.close()
 
+def evalOverlap(query, document):
+	sim = 0
+	if sim > 0:
+		report = '{0} 0 {1} 0 {2} 0'.format(query[0], document[0], sim)
+		return report
+	else:
+		return None
+
 queries = getData('qrys.txt')
 documents = getData('docs.txt')
+
+print evalOverlap(queries[0],documents[0])
+print documents[0]
 

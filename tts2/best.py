@@ -5,6 +5,7 @@
 import re
 import math
 import heapq
+from nltk import FreqDist
 
 # Save the dfw data to ease computation
 dfwDict = dict()
@@ -84,10 +85,19 @@ avgD = float(sum([len(doc[1]) for doc in documents]) / c)
 k = 2.0
 
 for query in queries:
+	# Evaluate the standard query
 	(results, rankings) = evalTfidf(query, documents, c, k, avgD)
-	newQueryWords = query[1]
-	for i in range(0,9):
-		newQueryWords += heapq.heappop(rankings)[1]
+	
+	# Bundle together the words from the top ranking set of documents
+	docWords = []
+	for i in range(0,14):						# top 15 documents used
+		docWords += heapq.heappop(rankings)[1]
+	
+	wordDist = FreqDist(word for word in docWords)
+	bestWords = wordDist.keys()[:30]			# use 30 best words from docs
+	
+	# Evaluate again using a query augmented with the most useful feedback
+	newQueryWords = query[1] + bestWords
 	newQuery = (query[0], newQueryWords)
 	(betterResults, rankings) = evalTfidf(newQuery, documents, c, k, avgD)
 	for result in betterResults:

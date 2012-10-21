@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
-# tf.idf Algorithm for TTS Assignment 2
+# tf.idf with pseudo relevance feedback for TTS Assignment 2
 # Steven Eardley s0934142
 
 import re
 import math
+import heapq
 
 # Save the dfw data to ease computation
 dfwDict = dict()
@@ -36,6 +37,9 @@ def findDfw(word,documents):
 def evalTfidf(query, documents, c, k, avgD):
 	reports = []
 	
+	# A heap for ordering documents by score
+	docHeap = []
+	
 	# The set of unique query words
 	queryVocab = list(set(query[1]))
 	
@@ -64,9 +68,10 @@ math.log(c / dfw))
 			report = '{0} 0 {1} 0 {2} 0'.format(query[0], document[0],
 similarity)
 			reports.append(report)
-	return reports
+			heapq.heappush(docHeap, (-similarity, document[1]))
+	return (reports, docHeap)
 
-outFile = open('tfidf.top', 'w')
+outFile = open('best.top', 'w')
 queries = getData('qrys.txt')
 documents = getData('docs.txt')
 
@@ -79,7 +84,12 @@ avgD = float(sum([len(doc[1]) for doc in documents]) / c)
 k = 2.0
 
 for query in queries:
-	results = evalTfidf(query, documents, c, k, avgD)
-	for result in results:
+	(results, rankings) = evalTfidf(query, documents, c, k, avgD)
+	newQueryWords = query[1]
+	for i in range(0,9):
+		newQueryWords += heapq.heappop(rankings)[1]
+	newQuery = (query[0], newQueryWords)
+	(betterResults, rankings) = evalTfidf(newQuery, documents, c, k, avgD)
+	for result in betterResults:
 		outFile.write(result + '\n')
 outFile.close()

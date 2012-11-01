@@ -1,0 +1,47 @@
+This is a transcript of a European Parliament speech by Helen Whittacker:
+
+Member of the Commission.
+ Mr President, the collection of TFTP data is important in the fight against terrorism.
+We know that TFTP data has been helpful to prevent terrorist attacks in Europe, like the  2006  liquid bombs at Heathrow Airport.
+The TFTP is therefore important, not only for the US, but also for Europe.
+
+I recently met US Home Secretary Napolitano and we addressed this issue.
+They are fully aware of the need to reform the intermediate agreement that we had but they are also concerned about a number of leads for known terrorists, which are no longer available.
+So we need to address the security gap but also to do this in a way that ensures full respect of fundamental rights and a sufficient level of data protection.
+
+That is why, after our last discussion on this, the Commission promptly started to work on a new mandate for a new EUUS TFTP Agreement.
+I think the mandate is ambitious but realistic.
+It balances the maintenance of our collective security, while addressing fundamental rights and data protection, based on Parliaments resolutions of September last year and of February this year.
+
+I would like to thank the rapporteur, Mrs HennisPlasschaert, for the very constructive cooperation we have had.
+The Commission has tried to liaise with her and the corapporteurs and shadow rapporteurs in this matter.
+I am also grateful to the Presidency for the work they have done to try to get this through the Council.
+
+We have tried to take on board the concerns expressed in the European Parliament resolutions.
+Data will be processed only for the purpose of terrorism.
+A request must be based on judicial authorisation.
+Third parties will not get bulk data.
+There will be reciprocity.
+There will be the push basis for transfer, SEPA data will be excluded and we will also address the issue of judicial redress on a nondiscriminatory basis.
+I will ensure that the Commission will keep Parliament fully and immediately informed throughout the process of negotiations.
+We aim to sign this agreement before the end of June, so that Parliament can vote on it in July.
+
+On the question of bulk data transfer, I know this is of great concern to the European Parliament but I also know that you do understand that, without bulk transfers, there will be no TFTP.
+However, legally binding safeguards will ensure that absolutely no data are accessed unless there is an objectively verified reason to believe that an identified person is a terrorist, a suspected terrorist, or is financing terrorism and that those data transfers are anonymous.
+Transfer of bulk data is, of course, sensitive, and we will strive for further reductions in the volume of data during the negotiations.
+But we also need to be realistic here.
+We are unlikely to see a huge reduction in what are already targeted requests.
+
+Reciprocity is part of the mandate.
+The envisaged agreement would place a legal obligation on the US Treasury to share leads with their EU counterparts and allow EU authorities to have TFTP searches undertaken against known terrorist suspects in the EU.
+Should the EU develop something similar  an EU TFTP  the Americans should help us in this as well.
+The Commission is willing to participate in these discussions with Member States.
+
+The mandate calls for a fiveyear retention period for nonextracted data.
+I believe there is some justification in this, bearing in mind that five years is also the period for financial transaction data that banks are subject to under EU antimoneylaundering legislation, but I am ready to hear Parliaments views on this and take this matter to the Council by the end of the week.
+
+In conclusion, I believe that the draft mandate is a true substantial improvement.
+It takes into account the concerns of Parliament raised in your resolutions.
+It takes into account the rapporteurs call for a doubletrack approach that might lead to an EU TFTP, even if this is, of course, something that we have to discuss internally in the EU.
+It is not part of the negotiations.
+It does take account of the EUUS relationship in this area as equal partners, which is, of course, the longterm goal in this regard.

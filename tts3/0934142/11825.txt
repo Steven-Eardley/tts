@@ -1,0 +1,53 @@
+This is a transcript of a European Parliament speech by Victor Finlayson:
+
+Member of the Commission.
+ Mr President, let me start by thanking everyone for yesterday giving us and me your trust and confidence by voting yes for the new Commission.
+
+It is an interesting first day at work and I am grateful to share with you the important issue of sharing information with the US for the purpose of combating terrorism, this time in relation to the Terrorist Finance Tracking Programme (TFTP).
+
+The European Parliament has, of course, shown great interest in this matter.
+This is quite right, since the TFTP confronts us again with the challenge of reconciling data sharing with data protection and, if we take up this challenge, this helps us to give citizens security, privacy and data protection.
+
+One of the aims of the interim agreement has been to ensure implementation of the conditions in the European Parliament resolution of September  2009 .
+We firmly intend to strengthen further the data protection part when negotiating the longterm agreement, particularly concerning the right to receive information about whether ones rights have been respected under the agreement, and stronger guarantees about effective redress, lawful data processing and the deletion of data.
+
+The second Bruguire report was made available to MEPs on Monday last week, and it demonstrates the significance and the value of TFTP in the investigation and disruption of terrorism, including in the European Union.
+The report confirms that TFTP has been used to identify and arrest individuals who have subsequently been convicted of terrorism within our Member States.
+The report also highlights that TFTP is a valuable source of reliable information necessary in the fight against terrorism.
+There are specific examples and the Council referred to a few of them.
+
+We know that the threat of terrorism in some of our Member States remains as high as ever, and I am sure that you can see that rejection of the interim agreement by this House would represent a serious blow to EU security.
+
+Some of our Member States have made it very clear that they want the TFTP to continue because they have benefited from it in the past and will continue to do so.
+They have told us that the reliable information that the TFTP provides on known and suspected terrorism is an important source of legitimate intelligence needed to address the complex threat, notably from alQaeda inspired terrorism.
+The interim agreement is not only a favour to the US; it is in our common interest.
+
+Much has been said about the level of protection of data in the interim agreement and this is, of course, a key concern.
+I encourage Members  and I am sure most of you have already done so  to look closely at the interim agreement.
+You will see that it contains significant and detailed legally binding commitments on the way that the US Treasury Department can process data under the agreement.
+They include, for example, a strict limitation on the purpose of processing, which is limited to the investigation, detection and prosecution of terrorism.
+It includes an absolute prohibition on data mining  searches of the database can only be undertaken where it is possible to show a reason to believe that the subject of the search is engaged in terrorism.
+
+That means that the data held on the TFTP database are effectively anonymous.
+Only if there is a reason to believe that one identified person is a terrorist can the data of that person be seen and extracted from the database.
+This is important.
+The interim agreement obliges the Treasury Department to delete data within five years of receipt  a period which is in keeping with the retention period in EU legislation on terrorist financing.
+The agreement also provides for a detailed EU review in which some of our own data protection authorities will participate to ensure that these and many other data protection obligations are complied with.
+
+The agreement does not involve the transfer of virtually all SWIFT data to the US Treasury Department.
+I can assure you that only a fraction of SWIFT data will be transferred under the interim agreement.
+It does not in any way affect the powers of data protection authorities with regard to processing activities performed in the EU by SWIFT or financial institutions.
+
+Refusal of consent will bring to an end the interim agreement, including the significant data protection safeguard it contains.
+If the US is able to access data by other means  for example through bilateral relations with the Netherlands  those safeguards will no longer apply.
+If the interim agreement falls, it is likely to take considerable time before any alternative can be put in place.
+So refusal of consent risks leading to both a data protection gap and a security gap.
+
+Finally, the interim agreement is only an interim agreement.
+It might not be the best agreement in the world.
+It can  and it will  be improved.
+The Commission is now finalising the draft mandate and the guidelines for the longterm agreement and we will adopt them swiftly.
+
+I give a personal commitment to you to ensure that the European Parliaments concern will be addressed and that we shall seek a strong protection of privacy and data protection in the new agreement.
+The European Parliament will be fully informed at all stages of this procedure.
+I hope that this answers a few of your questions.

@@ -13,6 +13,9 @@ hubs = open('hubs.txt', 'w')
 auth = open('auth.txt', 'w')
 pr = open('pr.txt', 'w')
 
+# graph_info is a dict: {sender : ([outgoing], [incoming])}
+graph_info = dict()
+
 def createGraph():
     f = open(argv[1], 'r')
     try:
@@ -20,8 +23,22 @@ def createGraph():
     finally:
         f.close()
     
-    for line in rawData[:10]:
+    for line in rawData:
         [msg_id, sender, recipient] = line.split()
-        print (sender, recipient)
+        try:
+            graph_info[sender][0].add(recipient)
+        except KeyError:
+            graph_info[sender] = (set([recipient]), set())
+            
+        try:
+            graph_info[recipient][1].add(sender)
+        except KeyError:
+            graph_info[recipient] = (set(), set([sender]))
 
 createGraph()
+for (k, (o,i)) in graph_info.items():
+    print "ADDRESS %s" % k
+    print "OUTGOING"
+    print list(o)
+    print "INCOMING"
+    print list(i)

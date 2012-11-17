@@ -82,7 +82,7 @@ def hubs_auth(iterations):
         for (person, (outgoing, incoming)) in graph_info.items():
             sum_inc_hub = 0.0
             for inc in incoming:
-                link_hub_score = scores[inc]
+                link_hub_score = scores[inc][1]
                 sum_inc_hub += link_hub_score
                 
             scores[person][1] = sum_inc_hub

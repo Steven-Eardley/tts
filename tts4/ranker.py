@@ -62,8 +62,8 @@ def hubs_auth(iterations):
     
     init_score = sqrt(n)
     
-    # Initialise PageRank score in a dict: {sender : (auth_score, hub_score)}
-    scores = dict(zip(graph_info.keys(), [(init_score, init_score)]*len(graph_info)))
+    # Initialise PageRank score in a dict: {sender : [auth_score, hub_score]}
+    scores = dict(zip(graph_info.keys(), [[init_score, init_score]]*len(graph_info)))
     
     for i in range(0,iterations):
         # Update the hub scores 
@@ -85,8 +85,8 @@ def hubs_auth(iterations):
             norm_hub += sum_inc_hub * sum_inc_hub    
         
         # Normalise the scores
-        for (person, (auth_score, hub_score)) in scores.items(): 
-            scores[person] = (auth_score / norm_auth, hub_score / norm_hub)
+        for (person, [auth_score, hub_score]) in scores.items(): 
+            scores[person] = [auth_score / norm_auth, hub_score / norm_hub]
     return scores
         
  
@@ -99,7 +99,7 @@ score_ha = hubs_auth(10)
 #    print person
 
 # Print hub scores
-for (person, (auth_score, hub_score)) in sorted(score_ha.iteritems(), key=operator.itemgetter(1)[1], reverse = True):
+for (person, [auth_score, hub_score]) in sorted(score_ha.iteritems(), key=operator.itemgetter(1)[1], reverse = True):
     print "%.8f" % score,
     print person
 

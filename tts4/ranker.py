@@ -60,7 +60,7 @@ def pagerank(iterations, lmbda):
 def hubs_auth(iterations):
     n = float(len(graph_info))
     
-    init_score = sqrt(n)
+    init_score = 1.0 #sqrt(n)
     
     # Initialise HITS score in a dict: {sender : [auth_score, hub_score]}
     scores = dict(zip(graph_info.keys(), [[init_score, init_score]]*len(graph_info)))
@@ -71,9 +71,9 @@ def hubs_auth(iterations):
         for (person, (outgoing, incoming)) in graph_info.items():
             sum_out_auth = 0.0
             for out in outgoing:
-                link_auth_score = scores[out][0]
-                sum_out_auth += link_auth_score
+                sum_out_auth += scores[out][0]
             
+            print person + str(sum_out_auth)
             scores[person][0] = sum_out_auth
             norm_auth += sum_out_auth * sum_out_auth
         
@@ -82,13 +82,10 @@ def hubs_auth(iterations):
         for (person, (outgoing, incoming)) in graph_info.items():
             sum_inc_hub = 0.0
             for inc in incoming:
-                link_hub_score = scores[inc][1]
-                sum_inc_hub += link_hub_score
+                sum_inc_hub += scores[inc][1]
                 
             scores[person][1] = sum_inc_hub
-            norm_hub += sum_inc_hub * sum_inc_hub
-            print sum_inc_hub
-            print norm_hub    
+            norm_hub += sum_inc_hub * sum_inc_hub   
         
         # Normalise the scores
         for (person, [auth_score, hub_score]) in scores.items(): 
@@ -106,7 +103,7 @@ score_ha = hubs_auth(10)
 
 # Print hub scores
 for (person, [auth_score, hub_score]) in sorted(score_ha.iteritems(), key=operator.itemgetter(1)[1], reverse = True):
-    print "%.8f" % score,
+    print "%.8f" % hub_score,
     print person
 
 #for (k, (o,i)) in graph_info.items():

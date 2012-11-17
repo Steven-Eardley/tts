@@ -60,52 +60,70 @@ def pagerank(iterations, lmbda):
 def hubs_auth(iterations):
     n = float(len(graph_info))
     
-    init_score = 1.0 #sqrt(n)
+    init_score = sqrt(n)
     
-    # Initialise HITS score in a dict: {sender : [auth_score, hub_score]}
-    scores = dict(zip(graph_info.keys(), [[init_score, init_score]]*len(graph_info)))
+    # Initialise HITS score in two dicts: {sender : score}
+    hub_scores = dict(zip(graph_info.keys(), [init_score]*len(graph_info)))
+    auth_scores = dict(zip(graph_info.keys(), [init_score]*len(graph_info)))
     
     for i in range(0,iterations):
+
         # Update the hub scores 
-        norm_auth = 0.0
-        for (person, (outgoing, incoming)) in graph_info.items():
-            sum_out_auth = 0.0
-            out_scores = [scores[out][0] for out in outgoing]
-            
-            print person
-            print out_scores
-            sum_out_auth = 1
-            scores[person][1] = sum_out_auth
-            norm_auth += sum_out_auth * sum_out_auth
-        
-        # Update authority scores
         norm_hub = 0.0
         for (person, (outgoing, incoming)) in graph_info.items():
-            sum_inc_hub = 0.0
-            for inc in incoming:
-                sum_inc_hub += scores[inc][1]
-                
-            scores[person][0] = sum_inc_hub
-            norm_hub += sum_inc_hub * sum_inc_hub   
+            out_scores = [auth_scores[out] for out in outgoing]
+            sum_out_auth = float(sum(out_scores))
+            hub_scores[person] = sum_out_auth
+            norm_hub += sum_out_auth * sum_out_auth
+
+        # Update authority scores
+        norm_auth = 0.0
+        for (person, (outgoing, incoming)) in graph_info.items():
+
+            inc_scores = [hub_scores[inc] for inc in incoming]
+            sum_inc_hub = float(sum(inc_scores))
+            auth_scores[person] = sum_inc_hub
+            norm_auth += sum_inc_hub * sum_inc_hub
         
         # Normalise the scores
-        for (person, [auth_score, hub_score]) in scores.items(): 
-            scores[person] = [auth_score / norm_auth, hub_score / norm_hub]
-    return scores
+        for (person, hub_score) in hub_scores.items():
+            hub_scores[person] = hub_score / sqrt(norm_hub)
+        for (person, auth_score) in auth_scores.items():
+            auth_scores[person] = auth_score / sqrt(norm_auth)
+
+    return (hub_scores, auth_scores)
         
  
 
 createGraph()
-#score_pr = pagerank(10, 0.8)
-score_ha = hubs_auth(10)
-#for (person, score) in sorted(score_pr.iteritems(), key=operator.itemgetter(1), reverse = True):
-#    print "%.8f" % score,
-#    print person
+score_pr = pagerank(10, 0.8)
+(hub_scores, auth_scores) = hubs_auth(10)
 
+print "\nPageRank"
+for (person, score) in list(sorted(score_pr.iteritems(), key=operator.itemgetter(1), reverse = True))[:10]:
+    print "%.8f" % score,
+    print person
+print 'jeff:',
+print "%.8f" % score_pr['jeff.dasovich@enron.com']
+
+print "\nHub Score"
 # Print hub scores
-for (person, [auth_score, hub_score]) in sorted(score_ha.iteritems(), key=operator.itemgetter(1)[1], reverse = True):
+for (person, hub_score) in list(sorted(hub_scores.iteritems(), key=operator.itemgetter(1), reverse = True))[:10]:
+    #if person == 'jeff.dasovich@enron.com':
     print "%.8f" % hub_score,
     print person
+print 'jeff:',
+print "%.8f" % hub_scores['jeff.dasovich@enron.com']
+
+print "\nAuthority Score"
+# Print authority scores
+for (person, auth_score) in list(sorted(auth_scores.iteritems(), key=operator.itemgetter(1), reverse = True))[:10]:
+    print "%.8f" % auth_score,
+    print person
+print 'jeff:',
+print "%.8f" % auth_scores['jeff.dasovich@enron.com']
+
+
 
 #for (k, (o,i)) in graph_info.items():
 #    print "ADDRESS %s" % k

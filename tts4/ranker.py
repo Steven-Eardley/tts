@@ -65,18 +65,13 @@ def hubs_auth(iterations):
     # Initialise HITS score in a dict: {sender : [auth_score, hub_score]}
     scores = dict(zip(graph_info.keys(), [[init_score, init_score]]*len(graph_info)))
     
-    print scores.popitem()
-    
     for i in range(0,iterations):
         # Update the hub scores 
         norm_auth = 0.0
         for (person, (outgoing, incoming)) in graph_info.items():
             sum_out_auth = 0.0
             for out in outgoing:
-                try:
-                    link_auth_score = scores[out][0]
-                except KeyError:
-                    print '%s not found in scores' % out
+                link_auth_score = scores[out][0]
                 sum_out_auth += link_auth_score
             
             scores[person][0] = sum_out_auth
@@ -87,10 +82,7 @@ def hubs_auth(iterations):
         for (person, (outgoing, incoming)) in graph_info.items():
             sum_inc_hub = 0.0
             for inc in incoming:
-                try:
-                    link_hub_score = scores[inc][1]
-                except KeyError:
-                    print '%s not found in scores' % inc
+                link_hub_score = scores[inc]
                 sum_inc_hub += link_hub_score
                 
             scores[person][1] = sum_inc_hub

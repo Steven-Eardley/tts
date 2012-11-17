@@ -62,7 +62,7 @@ def hubs_auth(iterations):
     
     init_score = sqrt(n)
     
-    # Initialise PageRank score in a dict: {sender : [auth_score, hub_score]}
+    # Initialise HITS score in a dict: {sender : [auth_score, hub_score]}
     scores = dict(zip(graph_info.keys(), [[init_score, init_score]]*len(graph_info)))
     
     print scores.popitem()
@@ -73,7 +73,12 @@ def hubs_auth(iterations):
         for (person, (outgoing, incoming)) in graph_info.items():
             sum_out_auth = 0.0
             for out in outgoing:
-                sum_out_auth += scores[out][0]
+                try:
+                    link_auth_score = scores[out][0]
+                except KeyError:
+                    # Do nothing
+                sum_out_auth += link_auth_score
+            
             scores[person][0] = sum_out_auth
             norm_auth += sum_out_auth * sum_out_auth
         
@@ -82,7 +87,12 @@ def hubs_auth(iterations):
         for (person, (outgoing, incoming)) in graph_info.items():
             sum_inc_hub = 0.0
             for inc in incoming:
+                try:
+                    link_hub_score = scores[in][1]
+                except KeyError:
+                    # Do nothing
                 sum_inc_hub += scores[inc][1]
+                
             scores[person][1] = sum_inc_hub
             norm_hub += sum_inc_hub * sum_inc_hub
             print sum_inc_hub

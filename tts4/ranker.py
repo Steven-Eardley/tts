@@ -53,13 +53,52 @@ def pagerank(iterations, lmbda):
                                          # divide score by no. of outgoing links
                  total_inc_score += scores[inc] / float(len(graph_info[inc][0]))
             
-            scores[person] = (1 - lmbda) / n + lmbda * total_inc_score
+            scores[person] = (1.0 - lmbda) / n + lmbda * total_inc_score
     return scores
+
+def hubs_auth(iterations):
+    n = float(len(graph_info))
     
+    init_score = math.sqrt(n)
+    
+    # Initialise PageRank score in a dict: {sender : (auth_score, hub_score)}
+    scores = dict(zip(graph_info.keys(), [(init_score, init_score)]*len(graph_info)))
+    
+    for i in range(0,iterations):
+        # Update the hub scores 
+        norm_auth = 0.0
+        for (person, (outgoing, incoming)) in graph_info.items():
+            sum_out_auth = 0.0
+            for out in outgoing:
+                sum_out_auth += scores[out][0]
+            scores[person][0] = sum_out_auth
+            norm_auth += sum_out_auth * sum_out_auth
+        
+        # Update authority scores
+        norm_hub = 0.0
+        for (person, (outgoing, incoming)) in graph_info.items():
+            sum_inc_hub = 0.0
+            for inc in incoming:
+                sum_inc_hub += scores[inc][1]
+            scores[person][1] = sum_inc_hub
+            norm_hub += sum_inc_hub * sum_inc_hub    
+        
+        # Normalise the scores
+        for (person, (auth_score, hub_score)) in scores.items(): 
+            scores[person] = (auth_score / norm_auth, hub_score / norm_hub)
+    return scores
+        
+ 
 
 createGraph()
-score = pagerank(10, 0.8)
-for (person, score) in sorted(score.iteritems(), key=operator.itemgetter(1), reverse = True):
+#score_pr = pagerank(10, 0.8)
+score_ha = hubs_auth(10)
+#for (person, score) in sorted(score_pr.iteritems(), key=operator.itemgetter(1), reverse = True):
+#    print "%.8f" % score,
+#    print person
+
+# Print hub scores
+for (person, (auth_score, hub_score)) in sorted(score_ha.iteritems(), key=operator.itemgetter(1)[1], reverse = True):
     print "%.8f" % score,
     print person
 

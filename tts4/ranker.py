@@ -75,8 +75,8 @@ def hubs_auth(iterations):
             for out in outgoing:
                 try:
                     link_auth_score = scores[out][0]
-                #except KeyError:
-                    # Do nothing
+                except KeyError:
+                    print '%s not found in scores' % out
                 sum_out_auth += link_auth_score
             
             scores[person][0] = sum_out_auth
@@ -89,8 +89,8 @@ def hubs_auth(iterations):
             for inc in incoming:
                 try:
                     link_hub_score = scores[inc][1]
-                #except KeyError:
-                    # Do nothing
+                except KeyError:
+                    print '%s not found in scores' % inc
                 sum_inc_hub += link_hub_score
                 
             scores[person][1] = sum_inc_hub

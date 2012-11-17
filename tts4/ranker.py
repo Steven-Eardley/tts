@@ -3,6 +3,7 @@
 # Steven Eardley s0934142
 
 from sys import argv, exit
+from math import sqrt
 import operator
 
 if len(argv) != 2:
@@ -59,7 +60,7 @@ def pagerank(iterations, lmbda):
 def hubs_auth(iterations):
     n = float(len(graph_info))
     
-    init_score = math.sqrt(n)
+    init_score = sqrt(n)
     
     # Initialise PageRank score in a dict: {sender : (auth_score, hub_score)}
     scores = dict(zip(graph_info.keys(), [(init_score, init_score)]*len(graph_info)))

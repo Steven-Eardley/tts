@@ -65,7 +65,7 @@ def hubs_auth(iterations):
     # Initialise PageRank score in a dict: {sender : [auth_score, hub_score]}
     scores = dict(zip(graph_info.keys(), [[init_score, init_score]]*len(graph_info)))
     
-    print scores
+    print scores[:5]
     
     for i in range(0,iterations):
         # Update the hub scores 

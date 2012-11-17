@@ -70,11 +70,12 @@ def hubs_auth(iterations):
         norm_auth = 0.0
         for (person, (outgoing, incoming)) in graph_info.items():
             sum_out_auth = 0.0
-            for out in outgoing:
-                sum_out_auth += scores[out][0]
+            out_scores = [scores[out][0] for out in outgoing]
             
-            print person + str(sum_out_auth)
-            scores[person][0] = sum_out_auth
+            print person
+            print out_scores
+            sum_out_auth = 1
+            scores[person][1] = sum_out_auth
             norm_auth += sum_out_auth * sum_out_auth
         
         # Update authority scores
@@ -84,7 +85,7 @@ def hubs_auth(iterations):
             for inc in incoming:
                 sum_inc_hub += scores[inc][1]
                 
-            scores[person][1] = sum_inc_hub
+            scores[person][0] = sum_inc_hub
             norm_hub += sum_inc_hub * sum_inc_hub   
         
         # Normalise the scores

@@ -88,10 +88,10 @@ def hubs_auth(iterations):
             sum_inc_hub = 0.0
             for inc in incoming:
                 try:
-                    link_hub_score = scores[in][1]
+                    link_hub_score = scores[inc][1]
                 except KeyError:
                     # Do nothing
-                sum_inc_hub += scores[inc][1]
+                sum_inc_hub += link_hub_score
                 
             scores[person][1] = sum_inc_hub
             norm_hub += sum_inc_hub * sum_inc_hub

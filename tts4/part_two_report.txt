@@ -1,0 +1,540 @@
+
+Interesting Person: klay@enron.com
+Emails sent: 0
+Emails received: 1539
+
+Emails sent to Interesting People
+klay@enron.com 0
+jeff.skilling@enron.com 0
+sara.shackleton@enron.com 0
+tana.jones@enron.com 0
+mark.taylor@enron.com 0
+kenneth.lay@enron.com 0
+louise.kitchen@enron.com 0
+gerald.nemec@enron.com 0
+jeff.dasovich@enron.com 0
+sally.beck@enron.com 0
+
+Emails received from Interesting People
+klay@enron.com 0
+jeff.skilling@enron.com 0
+sara.shackleton@enron.com 0
+tana.jones@enron.com 0
+mark.taylor@enron.com 0
+kenneth.lay@enron.com 0
+louise.kitchen@enron.com 0
+gerald.nemec@enron.com 0
+jeff.dasovich@enron.com 0
+sally.beck@enron.com 0
+
+Emails recieved from Hubs
+pete.davis@enron.com 0
+bill.williams@enron.com 0
+rhonda.denton@enron.com 0
+l..denton@enron.com 0
+grace.rodriguez@enron.com 0
+alan.comnes@enron.com 0
+kathryn.sheppard@enron.com 0
+kate.symes@enron.com 0
+kysa.alport@enron.com 0
+carla.hoffman@enron.com 0
+
+Emails sent to Authorities
+ryan.slinger@enron.com 0
+albert.meyers@enron.com 0
+mark.guzman@enron.com 0
+geir.solberg@enron.com 0
+craig.dean@enron.com 0
+bill.williams@enron.com 0
+john.anderson@enron.com 0
+michael.mier@enron.com 0
+leaf.harasin@enron.com 0
+eric.linder@enron.com 0
+
+*****
+
+Interesting Person: jeff.skilling@enron.com
+Emails sent: 953
+Emails received: 1612
+
+Emails sent to Interesting People
+klay@enron.com 0
+jeff.skilling@enron.com 0
+sara.shackleton@enron.com 0
+tana.jones@enron.com 0
+mark.taylor@enron.com 1
+kenneth.lay@enron.com 2
+louise.kitchen@enron.com 3
+gerald.nemec@enron.com 0
+jeff.dasovich@enron.com 0
+sally.beck@enron.com 2
+
+Emails received from Interesting People
+klay@enron.com 0
+jeff.skilling@enron.com 0
+sara.shackleton@enron.com 0
+tana.jones@enron.com 0
+mark.taylor@enron.com 0
+kenneth.lay@enron.com 1
+louise.kitchen@enron.com 1
+gerald.nemec@enron.com 0
+jeff.dasovich@enron.com 3
+sally.beck@enron.com 5
+
+Emails recieved from Hubs
+pete.davis@enron.com 0
+bill.williams@enron.com 0
+rhonda.denton@enron.com 0
+l..denton@enron.com 0
+grace.rodriguez@enron.com 0
+alan.comnes@enron.com 0
+kathryn.sheppard@enron.com 0
+kate.symes@enron.com 0
+kysa.alport@enron.com 0
+carla.hoffman@enron.com 0
+
+Emails sent to Authorities
+ryan.slinger@enron.com 0
+albert.meyers@enron.com 0
+mark.guzman@enron.com 0
+geir.solberg@enron.com 0
+craig.dean@enron.com 0
+bill.williams@enron.com 0
+john.anderson@enron.com 0
+michael.mier@enron.com 0
+leaf.harasin@enron.com 0
+eric.linder@enron.com 0
+
+*****
+
+Interesting Person: sara.shackleton@enron.com
+Emails sent: 7299
+Emails received: 6369
+
+Emails sent to Interesting People
+klay@enron.com 0
+jeff.skilling@enron.com 0
+sara.shackleton@enron.com 0
+tana.jones@enron.com 192
+mark.taylor@enron.com 289
+kenneth.lay@enron.com 0
+louise.kitchen@enron.com 0
+gerald.nemec@enron.com 0
+jeff.dasovich@enron.com 0
+sally.beck@enron.com 0
+
+Emails received from Interesting People
+klay@enron.com 0
+jeff.skilling@enron.com 0
+sara.shackleton@enron.com 0
+tana.jones@enron.com 286
+mark.taylor@enron.com 164
+kenneth.lay@enron.com 0
+louise.kitchen@enron.com 2
+gerald.nemec@enron.com 1
+jeff.dasovich@enron.com 0
+sally.beck@enron.com 0
+
+Emails recieved from Hubs
+pete.davis@enron.com 0
+bill.williams@enron.com 0
+rhonda.denton@enron.com 1
+l..denton@enron.com 1
+grace.rodriguez@enron.com 0
+alan.comnes@enron.com 0
+kathryn.sheppard@enron.com 0
+kate.symes@enron.com 0
+kysa.alport@enron.com 0
+carla.hoffman@enron.com 0
+
+Emails sent to Authorities
+ryan.slinger@enron.com 0
+albert.meyers@enron.com 0
+mark.guzman@enron.com 0
+geir.solberg@enron.com 0
+craig.dean@enron.com 0
+bill.williams@enron.com 0
+john.anderson@enron.com 0
+michael.mier@enron.com 0
+leaf.harasin@enron.com 0
+eric.linder@enron.com 0
+
+*****
+
+Interesting Person: tana.jones@enron.com
+Emails sent: 14847
+Emails received: 6492
+
+Emails sent to Interesting People
+klay@enron.com 0
+jeff.skilling@enron.com 0
+sara.shackleton@enron.com 286
+tana.jones@enron.com 0
+mark.taylor@enron.com 520
+kenneth.lay@enron.com 0
+louise.kitchen@enron.com 67
+gerald.nemec@enron.com 0
+jeff.dasovich@enron.com 0
+sally.beck@enron.com 1
+
+Emails received from Interesting People
+klay@enron.com 0
+jeff.skilling@enron.com 0
+sara.shackleton@enron.com 192
+tana.jones@enron.com 0
+mark.taylor@enron.com 206
+kenneth.lay@enron.com 0
+louise.kitchen@enron.com 19
+gerald.nemec@enron.com 1
+jeff.dasovich@enron.com 0
+sally.beck@enron.com 0
+
+Emails recieved from Hubs
+pete.davis@enron.com 0
+bill.williams@enron.com 0
+rhonda.denton@enron.com 12
+l..denton@enron.com 2
+grace.rodriguez@enron.com 0
+alan.comnes@enron.com 0
+kathryn.sheppard@enron.com 0
+kate.symes@enron.com 0
+kysa.alport@enron.com 0
+carla.hoffman@enron.com 0
+
+Emails sent to Authorities
+ryan.slinger@enron.com 0
+albert.meyers@enron.com 0
+mark.guzman@enron.com 0
+geir.solberg@enron.com 0
+craig.dean@enron.com 0
+bill.williams@enron.com 0
+john.anderson@enron.com 0
+michael.mier@enron.com 0
+leaf.harasin@enron.com 0
+eric.linder@enron.com 0
+
+*****
+
+Interesting Person: mark.taylor@enron.com
+Emails sent: 4229
+Emails received: 6123
+
+Emails sent to Interesting People
+klay@enron.com 0
+jeff.skilling@enron.com 0
+sara.shackleton@enron.com 164
+tana.jones@enron.com 206
+mark.taylor@enron.com 0
+kenneth.lay@enron.com 0
+louise.kitchen@enron.com 87
+gerald.nemec@enron.com 4
+jeff.dasovich@enron.com 0
+sally.beck@enron.com 1
+
+Emails received from Interesting People
+klay@enron.com 0
+jeff.skilling@enron.com 1
+sara.shackleton@enron.com 289
+tana.jones@enron.com 520
+mark.taylor@enron.com 0
+kenneth.lay@enron.com 0
+louise.kitchen@enron.com 102
+gerald.nemec@enron.com 8
+jeff.dasovich@enron.com 0
+sally.beck@enron.com 1
+
+Emails recieved from Hubs
+pete.davis@enron.com 0
+bill.williams@enron.com 0
+rhonda.denton@enron.com 0
+l..denton@enron.com 0
+grace.rodriguez@enron.com 0
+alan.comnes@enron.com 0
+kathryn.sheppard@enron.com 0
+kate.symes@enron.com 0
+kysa.alport@enron.com 0
+carla.hoffman@enron.com 0
+
+Emails sent to Authorities
+ryan.slinger@enron.com 0
+albert.meyers@enron.com 0
+mark.guzman@enron.com 0
+geir.solberg@enron.com 0
+craig.dean@enron.com 0
+bill.williams@enron.com 0
+john.anderson@enron.com 0
+michael.mier@enron.com 0
+leaf.harasin@enron.com 0
+eric.linder@enron.com 0
+
+*****
+
+Interesting Person: kenneth.lay@enron.com
+Emails sent: 1176
+Emails received: 1893
+
+Emails sent to Interesting People
+klay@enron.com 0
+jeff.skilling@enron.com 1
+sara.shackleton@enron.com 0
+tana.jones@enron.com 0
+mark.taylor@enron.com 0
+kenneth.lay@enron.com 0
+louise.kitchen@enron.com 2
+gerald.nemec@enron.com 0
+jeff.dasovich@enron.com 0
+sally.beck@enron.com 3
+
+Emails received from Interesting People
+klay@enron.com 0
+jeff.skilling@enron.com 2
+sara.shackleton@enron.com 0
+tana.jones@enron.com 0
+mark.taylor@enron.com 0
+kenneth.lay@enron.com 0
+louise.kitchen@enron.com 2
+gerald.nemec@enron.com 0
+jeff.dasovich@enron.com 1
+sally.beck@enron.com 2
+
+Emails recieved from Hubs
+pete.davis@enron.com 0
+bill.williams@enron.com 0
+rhonda.denton@enron.com 0
+l..denton@enron.com 0
+grace.rodriguez@enron.com 0
+alan.comnes@enron.com 0
+kathryn.sheppard@enron.com 0
+kate.symes@enron.com 0
+kysa.alport@enron.com 0
+carla.hoffman@enron.com 0
+
+Emails sent to Authorities
+ryan.slinger@enron.com 0
+albert.meyers@enron.com 0
+mark.guzman@enron.com 0
+geir.solberg@enron.com 0
+craig.dean@enron.com 0
+bill.williams@enron.com 0
+john.anderson@enron.com 0
+michael.mier@enron.com 0
+leaf.harasin@enron.com 0
+eric.linder@enron.com 0
+
+*****
+
+Interesting Person: louise.kitchen@enron.com
+Emails sent: 3610
+Emails received: 5202
+
+Emails sent to Interesting People
+klay@enron.com 0
+jeff.skilling@enron.com 1
+sara.shackleton@enron.com 2
+tana.jones@enron.com 19
+mark.taylor@enron.com 102
+kenneth.lay@enron.com 2
+louise.kitchen@enron.com 0
+gerald.nemec@enron.com 1
+jeff.dasovich@enron.com 1
+sally.beck@enron.com 49
+
+Emails received from Interesting People
+klay@enron.com 0
+jeff.skilling@enron.com 3
+sara.shackleton@enron.com 0
+tana.jones@enron.com 67
+mark.taylor@enron.com 87
+kenneth.lay@enron.com 2
+louise.kitchen@enron.com 0
+gerald.nemec@enron.com 1
+jeff.dasovich@enron.com 54
+sally.beck@enron.com 69
+
+Emails recieved from Hubs
+pete.davis@enron.com 0
+bill.williams@enron.com 0
+rhonda.denton@enron.com 0
+l..denton@enron.com 0
+grace.rodriguez@enron.com 0
+alan.comnes@enron.com 2
+kathryn.sheppard@enron.com 0
+kate.symes@enron.com 0
+kysa.alport@enron.com 0
+carla.hoffman@enron.com 0
+
+Emails sent to Authorities
+ryan.slinger@enron.com 0
+albert.meyers@enron.com 0
+mark.guzman@enron.com 0
+geir.solberg@enron.com 0
+craig.dean@enron.com 0
+bill.williams@enron.com 0
+john.anderson@enron.com 0
+michael.mier@enron.com 0
+leaf.harasin@enron.com 0
+eric.linder@enron.com 0
+
+*****
+
+Interesting Person: gerald.nemec@enron.com
+Emails sent: 3643
+Emails received: 3891
+
+Emails sent to Interesting People
+klay@enron.com 0
+jeff.skilling@enron.com 0
+sara.shackleton@enron.com 1
+tana.jones@enron.com 1
+mark.taylor@enron.com 8
+kenneth.lay@enron.com 0
+louise.kitchen@enron.com 1
+gerald.nemec@enron.com 0
+jeff.dasovich@enron.com 0
+sally.beck@enron.com 0
+
+Emails received from Interesting People
+klay@enron.com 0
+jeff.skilling@enron.com 0
+sara.shackleton@enron.com 0
+tana.jones@enron.com 0
+mark.taylor@enron.com 4
+kenneth.lay@enron.com 0
+louise.kitchen@enron.com 1
+gerald.nemec@enron.com 0
+jeff.dasovich@enron.com 0
+sally.beck@enron.com 0
+
+Emails recieved from Hubs
+pete.davis@enron.com 0
+bill.williams@enron.com 0
+rhonda.denton@enron.com 0
+l..denton@enron.com 0
+grace.rodriguez@enron.com 0
+alan.comnes@enron.com 0
+kathryn.sheppard@enron.com 0
+kate.symes@enron.com 0
+kysa.alport@enron.com 0
+carla.hoffman@enron.com 0
+
+Emails sent to Authorities
+ryan.slinger@enron.com 0
+albert.meyers@enron.com 0
+mark.guzman@enron.com 0
+geir.solberg@enron.com 0
+craig.dean@enron.com 0
+bill.williams@enron.com 0
+john.anderson@enron.com 0
+michael.mier@enron.com 0
+leaf.harasin@enron.com 0
+eric.linder@enron.com 0
+
+*****
+
+Interesting Person: jeff.dasovich@enron.com
+Emails sent: 37159
+Emails received: 7208
+
+Emails sent to Interesting People
+klay@enron.com 0
+jeff.skilling@enron.com 3
+sara.shackleton@enron.com 0
+tana.jones@enron.com 0
+mark.taylor@enron.com 0
+kenneth.lay@enron.com 1
+louise.kitchen@enron.com 54
+gerald.nemec@enron.com 0
+jeff.dasovich@enron.com 0
+sally.beck@enron.com 0
+
+Emails received from Interesting People
+klay@enron.com 0
+jeff.skilling@enron.com 0
+sara.shackleton@enron.com 0
+tana.jones@enron.com 0
+mark.taylor@enron.com 0
+kenneth.lay@enron.com 0
+louise.kitchen@enron.com 1
+gerald.nemec@enron.com 0
+jeff.dasovich@enron.com 0
+sally.beck@enron.com 0
+
+Emails recieved from Hubs
+pete.davis@enron.com 0
+bill.williams@enron.com 0
+rhonda.denton@enron.com 0
+l..denton@enron.com 0
+grace.rodriguez@enron.com 0
+alan.comnes@enron.com 227
+kathryn.sheppard@enron.com 0
+kate.symes@enron.com 0
+kysa.alport@enron.com 0
+carla.hoffman@enron.com 0
+
+Emails sent to Authorities
+ryan.slinger@enron.com 0
+albert.meyers@enron.com 0
+mark.guzman@enron.com 0
+geir.solberg@enron.com 0
+craig.dean@enron.com 0
+bill.williams@enron.com 1
+john.anderson@enron.com 0
+michael.mier@enron.com 0
+leaf.harasin@enron.com 0
+eric.linder@enron.com 0
+
+*****
+
+Interesting Person: sally.beck@enron.com
+Emails sent: 5086
+Emails received: 3587
+
+Emails sent to Interesting People
+klay@enron.com 0
+jeff.skilling@enron.com 5
+sara.shackleton@enron.com 0
+tana.jones@enron.com 0
+mark.taylor@enron.com 1
+kenneth.lay@enron.com 2
+louise.kitchen@enron.com 69
+gerald.nemec@enron.com 0
+jeff.dasovich@enron.com 0
+sally.beck@enron.com 0
+
+Emails received from Interesting People
+klay@enron.com 0
+jeff.skilling@enron.com 2
+sara.shackleton@enron.com 0
+tana.jones@enron.com 1
+mark.taylor@enron.com 1
+kenneth.lay@enron.com 3
+louise.kitchen@enron.com 49
+gerald.nemec@enron.com 0
+jeff.dasovich@enron.com 0
+sally.beck@enron.com 0
+
+Emails recieved from Hubs
+pete.davis@enron.com 0
+bill.williams@enron.com 0
+rhonda.denton@enron.com 0
+l..denton@enron.com 0
+grace.rodriguez@enron.com 0
+alan.comnes@enron.com 0
+kathryn.sheppard@enron.com 0
+kate.symes@enron.com 0
+kysa.alport@enron.com 0
+carla.hoffman@enron.com 0
+
+Emails sent to Authorities
+ryan.slinger@enron.com 0
+albert.meyers@enron.com 0
+mark.guzman@enron.com 0
+geir.solberg@enron.com 0
+craig.dean@enron.com 0
+bill.williams@enron.com 0
+john.anderson@enron.com 0
+michael.mier@enron.com 0
+leaf.harasin@enron.com 0
+eric.linder@enron.com 0
+
+*****

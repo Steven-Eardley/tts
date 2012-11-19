@@ -1,20 +1,20 @@
 # -*- coding: utf-8 -*-
 # Ranking program for Text Technologies Assignment 4
 # Steven Eardley s0934142
-
-from sys import argv, exit
+from __future__ import print_function
+from sys import argv, exit, stdout
 from math import sqrt
 from nltk.probability import FreqDist
 import operator
 
 if len(argv) != 2:
-    print "\nUse: ranker.py inputFile.txt\n"
+    print("\nUse: ranker.py inputFile.txt\n", file=stdout)
     exit()
 
 # Files for output
-#hubs = open('hubs.txt', 'w')
-#auth = open('auth.txt', 'w')
-#pr = open('pr.txt', 'w')
+hubs = open('hubs.txt', 'w')
+auth = open('auth.txt', 'w')
+pr = open('pr.txt', 'w')
 
 # graph_info is a dict: {sender : ([outgoing], [incoming])}
 graph_info = dict()
@@ -108,28 +108,30 @@ def part_one():
     pr_scores = pagerank(10, 0.8)
     (hub_scores, auth_scores) = hubs_auth(10)
 
-    print "\nPageRank"
+    # Write PageRank scores to file
     for (person, score) in list(sorted(pr_scores.iteritems(), key=operator.itemgetter(1), reverse = True))[:10]:
         pr.write("{0:.8f} {1}\n".format(score, person))
     pr.close()
 
-    print "\nHub Score"
-    # Print hub scores
+    # Write hub scores to file
     for (person, hub_score) in list(sorted(hub_scores.iteritems(), key=operator.itemgetter(1), reverse = True))[:10]:
         hubs.write("{0:.8f} {1}\n".format(hub_score, person))
     hubs.close()
 
-    print "\nAuthority Score"
-    # Print authority scores
+    # Write authority scores to file
     for (person, auth_score) in list(sorted(auth_scores.iteritems(), key=operator.itemgetter(1), reverse = True))[:10]:
         auth.write("{0:.8f} {1}\n".format(auth_score, person))
     auth.close()
 
+# Writes some interesting things about people to a file.
 def part_two():
     # Read back the top list of names from part one
     pr_read = open('pr.txt', 'r')
     hubs_read = open('hubs.txt', 'r')
     auth_read = open('auth.txt', 'r')
+    
+    report = open('part_two_report.txt','w')
+    
     try:
         pr_data = pr_read.readlines()
         hub_data = hubs_read.readlines()
@@ -160,13 +162,40 @@ def part_two():
     # Lets see who the interesting people email / are emailed by most
     for int_person in interesting_people:
         (out_connections, in_connections)= graph_info[int_person]
-        out_fdist = FreqDist(out_connections)
+        
         in_fdist = FreqDist(in_connections)
-        print int_person,
-        print out_fdist.items()[:5]
-        print in_fdist.items()[:5]
+        out_fdist = FreqDist(out_connections)
         
+        print ("\nInteresting Person:", end=' ', file=report)
+        print (int_person, file=report)
+        print ("Emails sent: %d" % len(graph_info[int_person][0]), file= report)
+        print ("Emails received: %d" % len(graph_info[int_person][1]), file= report)
         
+        # Lets see how our interesting people are co-related
+        print ("\nEmails sent to Interesting People", file= report)
+        for person in interesting_people:
+            print (person, end=' ', file= report)
+            print (out_fdist[person], file= report)
+            
+        print ("\nEmails received from Interesting People", file= report)
+        for person in interesting_people:
+            print (person, end=' ', file= report)
+            print (in_fdist[person], file= report)
+        
+        # Lets see how our hub-y and authority-y people relate to our interesting people
+        print ("\nEmails recieved from Hubs", file= report)
+        for hub_person in hub_people:
+            print (hub_person, end=' ', file= report)
+            print (in_fdist[hub_person], file= report)
+        
+        print ("\nEmails sent to Authorities", file= report)
+        for auth_person in auth_people:
+            print (auth_person, end=' ', file= report)
+            print (out_fdist[auth_person], file= report)
+        
+        print ("\n*****", file=report)
+    report.close()
+
 createGraph()
-#part_one()
+part_one()
 part_two()

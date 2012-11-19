@@ -1,0 +1,45 @@
+digraph G { 
+   "jeff.skilling@enron.com" -> "klay@enron.com" ; 
+   "jeff.skilling@enron.com" -> "mark.taylor@enron.com"; 
+   "jeff.skilling@enron.com" -> "kenneth.lay@enron.com";
+   "jeff.skilling@enron.com" -> "louise.kitchen@enron.com";
+   "jeff.skilling@enron.com" -> "sally.beck@enron.com";
+   "kenneth.lay@enron.com" -> "jeff.skilling@enron.com";
+   "louise.kitchen@enron.com" -> "jeff.skilling@enron.com";
+   "jeff.dasovich@enron.com" -> "jeff.skilling@enron.com";
+   "sally.beck@enron.com" -> "jeff.skilling@enron.com";
+
+   "sara.shackleton" -> "tana.jones@enron.com";
+   "sara.shackleton" -> "mark.taylor@enron.com";
+   "tana.jones@enron.com" -> "sara.shackleton";
+   "mark.taylor@enron.com" -> "sara.shackleton";
+   "louise.kitchen@enron.com" -> "sara.shackleton";
+   "gerald.nemec@enron.com" -> "sara.shackleton";
+
+   "tana.jones@enron.com" -> "mark.taylor@enron.com";
+   "tana.jones@enron.com" -> "louise.kitchen@enron.com";
+   "tana.jones@enron.com" -> "sally.beck@enron.com";
+   "mark.taylor@enron.com" -> "tana.jones@enron.com";
+   "louise.kitchen@enron.com" -> "tana.jones@enron.com";
+   "gerald.nemec@enron.com" -> "tana.jones@enron.com";
+   
+   "mark.taylor@enron.com" -> "louise.kitchen@enron.com";
+   "mark.taylor@enron.com" -> "gerald.nemec@enron.com";
+   "mark.taylor@enron.com" -> "sally.beck@enron.com";
+   "louise.kitchen@enron.com" -> "mark.taylor@enron.com";
+   "gerald.nemec@enron.com" -> "mark.taylor@enron.com";
+   "sally.beck@enron.com " -> "mark.taylor@enron.com";
+   
+   "kenneth.lay@enron.com" -> "louise.kitchen@enron.com";
+   "kenneth.lay@enron.com" -> "sally.beck@enron.com";
+   "louise.kitchen@enron.com " -> "kenneth.lay@enron.com";
+   "jeff.dasovich@enron.com" -> "kenneth.lay@enron.com";
+   "sally.beck@enron.com" -> "kenneth.lay@enron.com";
+   
+   "louise.kitchen@enron.com" -> "gerald.nemec@enron.com";
+   "louise.kitchen@enron.com" -> "jeff.dasovich@enron.com";
+   "louise.kitchen@enron.com" -> "sally.beck@enron.com";
+   "gerald.nemec@enron.com " -> "louise.kitchen@enron.com";
+   "jeff.dasovich@enron.com" -> "louise.kitchen@enron.com";
+   "sally.beck@enron.com" -> "louise.kitchen@enron.com";
+}
